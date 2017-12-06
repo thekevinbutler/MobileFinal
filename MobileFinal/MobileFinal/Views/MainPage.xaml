@@ -1,11 +1,50 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileFinal.Views.MainPage"
-             Title="{Binding Title}">
-
+             x:Class="MobileFinal.Views.MainPage">
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Entry
+                Placeholder="bbc-news, fox-news, etc"
+                Text="{Binding NewsOrgEnteredByUser}"
+                WidthRequest="200" />
+            <Button
+                Text="Search"
+                Command="{Binding GetNewsForOrgCommand}" />
+        <Label Text="{Binding Hap}"/>
+        <ListView
+            x:Name="NewsListView"
+            ItemsSource="{Binding NewsCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        x:Name="NewsItemCell">
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                x:Name="MoreInfoButton"
+                                AutomationId="MoreInfoButton"
+                                BindingContext="{Binding Source={x:Reference NewsListView}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference NewsItemCell}, Path=BindingContext}"
+                                Text="More Info" />
+                        </ViewCell.ContextActions>
+                        <ViewCell.View>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    x:Name="TitleNameLabel"
+                                    Text="{Binding Article.Title}"
+                                    VerticalOptions="Center"
+                                    Margin="10" />
+                                <Label
+                                    x:Name="DateLabel"
+                                    Text="lol"
+                                    VerticalOptions="Center"
+                                    Margin="3" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>
