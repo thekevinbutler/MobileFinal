@@ -7,12 +7,22 @@
  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Entry
                 Placeholder="bbc-news, fox-news, etc"
-                Text="{Binding NewsOrgEnteredByUser}"
+                Text="lol"
                 WidthRequest="200" />
             <Button
                 Text="Search"
                 Command="{Binding GetNewsForOrgCommand}" />
-        <Label Text="{Binding Hap}"/>
+        <Picker x:Name="picker" 
+            SelectedItem="{Binding NewsOrgEnteredByUser}"
+            Title="Select a news Org">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                <x:String>bbc-news</x:String>
+                <x:String>wired</x:String>
+                <x:String>techcrunch</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <ListView
             x:Name="NewsListView"
             ItemsSource="{Binding ArticleCollection}">

@@ -72,6 +72,7 @@ namespace MobileFinal.ViewModels
 
         async void GetNewsForOrg()
         {
+            //ArticleCollection.Clear();
             HttpClient client = new HttpClient();
             var uri = new Uri(
                 string.Format(
@@ -83,6 +84,8 @@ namespace MobileFinal.ViewModels
                 var content = await response.Content.ReadAsStringAsync();
                 newsData = NewsArticle.FromJson(content);
 
+
+
                 for (int i = 0; i < newsData.Articles.Count; i++)
                 {
                     ArticleCollection.Add(newsData.Articles[i]);
@@ -90,6 +93,7 @@ namespace MobileFinal.ViewModels
 
             }
             NewsCollection.Add(newsData);
+           
 
 
 
