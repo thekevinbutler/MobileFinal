@@ -13,7 +13,7 @@
         <Label Text="{Binding Hap}"/>
         <ListView
             x:Name="NewsListView"
-            ItemsSource="{Binding NewsCollection}">
+            ItemsSource="{Binding ArticleCollection}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell
@@ -31,7 +31,7 @@
                                 Orientation="Horizontal">
                                 <Label
                                     x:Name="TitleNameLabel"
-                                    Text="{Binding Article.Title}"
+                                    Text="{Binding Title}"
                                     VerticalOptions="Center"
                                     Margin="10" />
                                 <Label

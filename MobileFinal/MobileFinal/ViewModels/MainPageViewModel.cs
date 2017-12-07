@@ -38,6 +38,14 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _newsCollection, value); }
         }
 
+        private ObservableCollection<Article> _articleCollection = new ObservableCollection<Article>();
+        public ObservableCollection<Article> ArticleCollection
+        {
+            get { return _articleCollection; }
+            set { SetProperty(ref _articleCollection, value); }
+        }
+
+
         INavigationService _navigationService;
 
         public MainPageViewModel(INavigationService navigationService)
@@ -60,6 +68,8 @@ namespace MobileFinal.ViewModels
 
 
 
+        private
+
         async void GetNewsForOrg()
         {
             HttpClient client = new HttpClient();
@@ -72,9 +82,12 @@ namespace MobileFinal.ViewModels
             {
                 var content = await response.Content.ReadAsStringAsync();
                 newsData = NewsArticle.FromJson(content);
-                Hap = content.ToString();
+
+
+                ArticleCollection.Add(newsData.Articles.First());
             }
             NewsCollection.Add(newsData);
+            
 
 
         }

@@ -17,12 +17,12 @@ namespace MobileFinal.Models
             [JsonProperty("status")]
             public String status { get; set; }
 
-            [JsonProperty("article")]
-            public List<Articles> Article { get; set; }
+            [JsonProperty("articles")]
+            public List<Article> Articles { get; set; }
         }
 
         
-        public partial class Articles
+        public partial class Article
         {
 
             [JsonProperty("source")]
