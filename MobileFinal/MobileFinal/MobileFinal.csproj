@@ -14,8 +14,16 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="Views\NewsPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Views\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

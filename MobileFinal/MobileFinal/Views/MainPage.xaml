@@ -6,7 +6,7 @@
         HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
        <Button
         Text = "Go to News Page"
-        Command = "{Binding NavToNewsPage}"
+        Command = "{Binding NavToNewsCommand}"
         />
     </StackLayout>
 
