@@ -83,8 +83,11 @@ namespace MobileFinal.ViewModels
                 var content = await response.Content.ReadAsStringAsync();
                 newsData = NewsArticle.FromJson(content);
 
+                for (int i = 0; i < newsData.Articles.Count;i++ )
+                {
+                    ArticleCollection.Add(newsData.Articles[i]);
+                }
 
-                ArticleCollection.Add(newsData.Articles.First());
             }
             NewsCollection.Add(newsData);
             

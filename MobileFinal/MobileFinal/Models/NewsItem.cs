@@ -45,7 +45,7 @@ namespace MobileFinal.Models
 
 
             [JsonProperty("publishedAt")]
-            public DateTime publishedAt { get; set; }
+            public DateTime PublishedAt { get; set; }
 
 
         }
