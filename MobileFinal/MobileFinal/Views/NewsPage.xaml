@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True" 
+    x:Class="MobileFinal.Views.NewsPage">
+ <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Entry
+                Placeholder="bbc-news, fox-news, etc"
+                Text="{Binding NewsOrgEnteredByUser}"
+                WidthRequest="200" />
+            <Button
+                Text="Search"
+                Command="{Binding GetNewsForOrgCommand}" />
+        <Label Text="{Binding Hap}"/>
+        <ListView
+            x:Name="NewsListView"
+            ItemsSource="{Binding ArticleCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        x:Name="NewsItemCell">
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                x:Name="MoreInfoButton"
+                                AutomationId="MoreInfoButton"
+                                BindingContext="{Binding Source={x:Reference NewsListView}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference NewsItemCell}, Path=BindingContext}"
+                                Text="More Info" />
+                        </ViewCell.ContextActions>
+                        <ViewCell.View>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    x:Name="TitleNameLabel"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center"
+                                    Margin="10" />
+                                <Label
+                                    x:Name="DateLabel"
+                                    Text="{Binding PublishedAt}"
+                                    VerticalOptions="Center"
+                                    Margin="3" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
