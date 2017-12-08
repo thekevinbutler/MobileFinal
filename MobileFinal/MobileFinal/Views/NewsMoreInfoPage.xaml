@@ -4,8 +4,8 @@
             <Button
                 Text="Go Back!"
                 Command="{Binding GoBackCommand}" />
-            <Image Source="{Binding ArticleInfo.Url}" />
+            <Image Source="{Binding Article.Url}" />
         <Label
-            Text="{Binding ArticleInfo.Description}" />  
+            Text="{Binding Article.Description}" />  
     </StackLayout>
 </ContentPage>

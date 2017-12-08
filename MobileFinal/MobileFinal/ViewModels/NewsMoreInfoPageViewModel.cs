@@ -6,7 +6,7 @@ using System.Linq;
 using Prism.Navigation;
 using Xamarin.Forms.Xaml;
 using static MobileFinal.Models.NewsItem;
-
+using Xamarin.Forms;
 
 namespace MobileFinal.ViewModels
 {
@@ -15,7 +15,7 @@ namespace MobileFinal.ViewModels
         
             INavigationService _navigationService;
 
-            public DelegateCommand GoBackCommand { get; set; }
+            public DelegateCommand GoWebCommand{ get; set; }
 
             private Article _article;
             public Article Article
@@ -29,12 +29,13 @@ namespace MobileFinal.ViewModels
         {
                 _navigationService = navigationService;
 
-            GoBackCommand = new DelegateCommand(GoBack);
+            GoWebCommand = new DelegateCommand(GoWeb);
         }
 
-        private void GoBack()
+        private void GoWeb()
         {
-                _navigationService.GoBackAsync();
+            var url = Article.Url.ToString();
+            Device.OpenUri(new Uri(url));
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
