@@ -12,6 +12,9 @@
             <Button
                 Text="Search"
                 Command="{Binding GetNewsForOrgCommand}" />
+            <Button
+                Text="Clear"
+                Command="{Binding DeleteArtCommand}" />
         <Picker x:Name="picker" 
             SelectedItem="{Binding NewsOrgEnteredByUser}"
             Title="Select a news Org">

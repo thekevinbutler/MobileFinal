@@ -16,6 +16,7 @@ namespace MobileFinal.ViewModels
         public DelegateCommand<NewsArticle> DeleteNewsCommand { get; set; }
         public DelegateCommand GetNewsForOrgCommand { get; set; }
         public DelegateCommand<NewsArticle> NavToMoreInfoPageCommand { get; set; }
+        public DelegateCommand DeleteArtCommand { get; set; }
 
         private string _hap;
         public string Hap
@@ -55,6 +56,7 @@ namespace MobileFinal.ViewModels
             // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             GetNewsForOrgCommand = new DelegateCommand(GetNewsForOrg);
             NavToMoreInfoPageCommand = new DelegateCommand<NewsArticle>(NavToMoreInfoPage);
+            DeleteArtCommand = new DelegateCommand(DeleteArticles);
         }
 
 
@@ -67,10 +69,13 @@ namespace MobileFinal.ViewModels
         }
 
 
+        private  void DeleteArticles()
+        {
+            ArticleCollection.Clear();
+        }
 
-        private
 
-        async void GetNewsForOrg()
+        private async void GetNewsForOrg()
         {
             //ArticleCollection.Clear();
             HttpClient client = new HttpClient();
