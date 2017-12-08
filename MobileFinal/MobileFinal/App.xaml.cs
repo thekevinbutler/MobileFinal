@@ -23,13 +23,14 @@ namespace MobileFinal
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/ClockPage");
         }
 
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
-        }
+			Container.RegisterTypeForNavigation<ClockPage>();
+		}
     }
 }
