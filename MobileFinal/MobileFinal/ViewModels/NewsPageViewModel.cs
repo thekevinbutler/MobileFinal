@@ -15,7 +15,7 @@ namespace MobileFinal.ViewModels
     {
         public DelegateCommand<NewsArticle> DeleteNewsCommand { get; set; }
         public DelegateCommand GetNewsForOrgCommand { get; set; }
-        public DelegateCommand<NewsArticle> NavToMoreInfoPageCommand { get; set; }
+        public DelegateCommand<Article> NavToMoreInfoPageCommand { get; set; }
         public DelegateCommand DeleteArtCommand { get; set; }
 
         private string _hap;
@@ -55,17 +55,17 @@ namespace MobileFinal.ViewModels
             _navigationService = navigationService;
             // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             GetNewsForOrgCommand = new DelegateCommand(GetNewsForOrg);
-            NavToMoreInfoPageCommand = new DelegateCommand<NewsArticle>(NavToMoreInfoPage);
+            NavToMoreInfoPageCommand = new DelegateCommand<Article>(NavToMoreInfoPage);
             DeleteArtCommand = new DelegateCommand(DeleteArticles);
         }
 
 
 
-        private async void NavToMoreInfoPage(NewsArticle newsItem)
+        private async void NavToMoreInfoPage(Article newsItem)
         {
             var navParams = new NavigationParameters();
-            navParams.Add("NewsItemInfo", newsItem);
-            await _navigationService.NavigateAsync("MoreInfoPage", navParams);
+            navParams.Add("ArticleItemInfo", newsItem);
+            await _navigationService.NavigateAsync("NewsMoreInfoPage", navParams);
         }
 
 
