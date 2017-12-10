@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
     <PackageReference Include="SkiaSharp" Version="1.59.2" />
     <PackageReference Include="SkiaSharp.Views" Version="1.59.2" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.59.2" />
