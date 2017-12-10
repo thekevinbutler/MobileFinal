@@ -14,7 +14,7 @@ namespace MobileFinal.Models
     {
 
 
-        public class Ability2
+        public partial class Ability2
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -22,7 +22,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Ability
+        public partial class Ability
         {
             [JsonProperty("is_hidden")]
             public bool is_hidden { get; set; }
@@ -32,7 +32,7 @@ namespace MobileFinal.Models
             public Ability2 ability { get; set; }
         }
 
-        public class Form
+        public partial class Form
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -40,7 +40,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Version
+        public partial class Version
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -48,7 +48,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class GameIndice
+        public partial class GameIndice
         {
             [JsonProperty("game_index")]
             public int game_index { get; set; }
@@ -56,7 +56,7 @@ namespace MobileFinal.Models
             public Version version { get; set; }
         }
 
-        public class Item
+        public partial class Item
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -64,7 +64,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Version2
+        public partial class Version2
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -72,7 +72,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class VersionDetail
+        public partial class VersionDetail
         {
             [JsonProperty("rarity")]
             public int rarity { get; set; }
@@ -80,7 +80,7 @@ namespace MobileFinal.Models
             public Version2 version { get; set; }
         }
 
-        public class HeldItem
+        public partial class HeldItem
         {
             [JsonProperty("item")]
             public Item item { get; set; }
@@ -88,7 +88,7 @@ namespace MobileFinal.Models
             public List<VersionDetail> version_details { get; set; }
         }
 
-        public class LocationArea
+        public partial class LocationArea
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -96,7 +96,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class ConditionValue
+        public partial class ConditionValue
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -104,7 +104,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Method
+        public partial class Method
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -112,7 +112,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class EncounterDetail
+        public partial class EncounterDetail
         {
             [JsonProperty("min_level")]
             public int min_level { get; set; }
@@ -126,7 +126,7 @@ namespace MobileFinal.Models
             public Method method { get; set; }
         }
 
-        public class Version3
+        public partial class Version3
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -134,7 +134,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class VersionDetail2
+        public partial class VersionDetail2
         {
             [JsonProperty("max_chance")]
             public int max_chance { get; set; }
@@ -144,7 +144,7 @@ namespace MobileFinal.Models
             public Version3 version { get; set; }
         }
 
-        public class LocationAreaEncounter
+        public partial class LocationAreaEncounter
         {
             [JsonProperty("location_area")]
             public LocationArea location_area { get; set; }
@@ -152,7 +152,7 @@ namespace MobileFinal.Models
             public List<VersionDetail2> version_details { get; set; }
         }
 
-        public class Move2
+        public partial class Move2
         {
             [JsonProperty("move")]
             public string name { get; set; }
@@ -160,7 +160,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class VersionGroup
+        public partial class VersionGroup
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -168,7 +168,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class MoveLearnMethod
+        public partial class MoveLearnMethod
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -176,7 +176,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class VersionGroupDetail
+        public partial class VersionGroupDetail
         {
             [JsonProperty("level_learned_at")]
             public int level_learned_at { get; set; }
@@ -186,7 +186,7 @@ namespace MobileFinal.Models
             public MoveLearnMethod move_learn_method { get; set; }
         }
 
-        public class Move
+        public partial class Move
         {
             [JsonProperty("move")]
             public Move2 move { get; set; }
@@ -194,7 +194,7 @@ namespace MobileFinal.Models
             public List<VersionGroupDetail> version_group_details { get; set; }
         }
 
-        public class Species
+        public partial class Species
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -202,7 +202,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Sprites
+        public partial class Sprites
         {
             [JsonProperty("back_femal")]
             public string back_female { get; set; }
@@ -222,7 +222,7 @@ namespace MobileFinal.Models
             public string front_shiny { get; set; }
         }
 
-        public class Stat2
+        public partial class Stat2
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -230,7 +230,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Stat
+        public partial class Stat
         {
             [JsonProperty("base_stat")]
             public int base_stat { get; set; }
@@ -240,7 +240,7 @@ namespace MobileFinal.Models
             public Stat2 stat { get; set; }
         }
 
-        public class Type2
+        public partial class Type2
         {
             [JsonProperty("name")]
             public string name { get; set; }
@@ -248,7 +248,7 @@ namespace MobileFinal.Models
             public string url { get; set; }
         }
 
-        public class Type
+        public partial class Type
         {
             [JsonProperty("slot")]
             public int slot { get; set; }
@@ -303,7 +303,7 @@ namespace MobileFinal.Models
 
         public static string ToJson(this Pokemon self) => JsonConvert.SerializeObject(self, Converter.Settings);
 
-        public class Converter
+        public partial class Converter
         {
             public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
             {

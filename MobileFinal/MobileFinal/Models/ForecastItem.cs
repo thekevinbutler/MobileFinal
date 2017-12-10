@@ -11,7 +11,7 @@ namespace MobileFinal.Models
 {
     public static class ForecastItem
     {
-        public class City
+        public partial class City
         {
             [JsonProperty("id")]
             public int id { get; set; }
@@ -19,7 +19,7 @@ namespace MobileFinal.Models
             public string name { get; set; }
         }
 
-        public class Coord
+        public partial class Coord
         {
             [JsonProperty("lon")]
             public double lon { get; set; }
@@ -27,7 +27,7 @@ namespace MobileFinal.Models
             public double lat { get; set; }
         }
 
-        public class Main
+        public partial class Main
         {
             [JsonProperty("temp")]
             public double temp { get; set; }
@@ -47,7 +47,7 @@ namespace MobileFinal.Models
             public double temp_kf { get; set; }
         }
 
-        public class Weather
+        public partial class Weather
         {
             [JsonProperty("id")]
             public int id { get; set; }
@@ -59,13 +59,13 @@ namespace MobileFinal.Models
             public string icon { get; set; }
         }
 
-        public class Clouds
+        public partial class Clouds
         {
             [JsonProperty("all")]
             public int all { get; set; }
         }
 
-        public class Wind
+        public partial class Wind
         {
             [JsonProperty("speed")]
             public double speed { get; set; }
@@ -73,13 +73,13 @@ namespace MobileFinal.Models
             public double deg { get; set; }
         }
 
-        public class Sys
+        public partial class Sys
         {
             [JsonProperty("pod")]
             public string pod { get; set; }
         }
 
-        public class List
+        public partial class List
         {
             [JsonProperty("dt")]
             public int dt { get; set; }
