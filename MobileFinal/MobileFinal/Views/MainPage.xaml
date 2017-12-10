@@ -39,7 +39,8 @@
 		<Button BackgroundColor="LightBlue"
 				Image="pokemonicon.png"
 				Grid.Column="0"
-				Grid.Row="1"/>
+				Grid.Row="1"
+                Command ="{Binding NavToPokemonCommand}"/>
 		<Button BackgroundColor="LightBlue"
 				Image="mapsicon.png"
 				Grid.Column="2"

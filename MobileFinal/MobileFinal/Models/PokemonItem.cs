@@ -256,7 +256,7 @@ namespace MobileFinal.Models
             public Type2 type { get; set; }
         }
 
-        public class Pokemon
+        public partial class Pokemon
         {
             [JsonProperty("id")]
             public int id { get; set; }
@@ -280,8 +280,8 @@ namespace MobileFinal.Models
             public List<GameIndice> game_indices { get; set; }
             [JsonProperty("held_items")]
             public List<HeldItem> held_items { get; set; }
-            [JsonProperty("location_area_encounters")]
-            public List<LocationAreaEncounter> location_area_encounters { get; set; }
+           // [JsonProperty("location_area_encounters")]
+           // public List<LocationAreaEncounter> location_area_encounters { get; set; }
             [JsonProperty("moves")]
             public List<Move> moves { get; set; }
             [JsonProperty("species")]

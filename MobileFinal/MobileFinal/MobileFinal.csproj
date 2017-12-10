@@ -20,4 +20,5 @@
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
+
 </Project>
