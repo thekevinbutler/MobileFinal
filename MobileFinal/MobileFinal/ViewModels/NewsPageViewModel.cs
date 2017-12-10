@@ -11,13 +11,19 @@ using System.Net.Http;
 
 namespace MobileFinal.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class NewsPageViewModel : BindableBase, INavigationAware
     {
         public DelegateCommand<NewsArticle> DeleteNewsCommand { get; set; }
+        public DelegateCommand GetNewsForOrgCommand { get; set; }
+        public DelegateCommand<Article> NavToMoreInfoPageCommand { get; set; }
+        public DelegateCommand DeleteArtCommand { get; set; }
 
-        public DelegateCommand NavToNewsCommand { get; set; }
-
-
+        private string _hap;
+        public string Hap
+        {
+            get { return _hap; }
+            set { SetProperty(ref _hap, value); }
+        }
 
         private string _newsOrgEnteredByUser;
         public string NewsOrgEnteredByUser
@@ -43,29 +49,35 @@ namespace MobileFinal.ViewModels
 
         INavigationService _navigationService;
 
-        public MainPageViewModel(INavigationService navigationService)
+        public NewsPageViewModel(INavigationService navigationService)
         {
 
             _navigationService = navigationService;
-           // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
-            NavToNewsCommand = new DelegateCommand(NavToNewsPage);
+            // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
+            GetNewsForOrgCommand = new DelegateCommand(GetNewsForOrg);
+            NavToMoreInfoPageCommand = new DelegateCommand<Article>(NavToMoreInfoPage);
+            DeleteArtCommand = new DelegateCommand(DeleteArticles);
         }
 
 
 
-        private async void NavToNewsPage()
+        private async void NavToMoreInfoPage(Article newsItem)
         {
             var navParams = new NavigationParameters();
-
-            await _navigationService.NavigateAsync("NewsPage", navParams);
+            navParams.Add("ArticleItemInfo", newsItem);
+            await _navigationService.NavigateAsync("NewsMoreInfoPage", navParams);
         }
 
 
-
-        private
-
-        async void GetNewsForOrg()
+        private  void DeleteArticles()
         {
+            ArticleCollection.Clear();
+        }
+
+
+        private async void GetNewsForOrg()
+        {
+            //ArticleCollection.Clear();
             HttpClient client = new HttpClient();
             var uri = new Uri(
                 string.Format(
@@ -77,14 +89,17 @@ namespace MobileFinal.ViewModels
                 var content = await response.Content.ReadAsStringAsync();
                 newsData = NewsArticle.FromJson(content);
 
-                for (int i = 0; i < newsData.Articles.Count;i++ )
+
+
+                for (int i = 0; i < newsData.Articles.Count; i++)
                 {
                     ArticleCollection.Add(newsData.Articles[i]);
                 }
 
             }
             NewsCollection.Add(newsData);
-            
+           
+
 
 
         }
