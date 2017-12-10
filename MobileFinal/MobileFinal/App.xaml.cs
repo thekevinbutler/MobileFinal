@@ -32,6 +32,7 @@ namespace MobileFinal
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<NewsPage>();
             Container.RegisterTypeForNavigation<NewsMoreInfoPage>();
+            Container.RegisterTypeForNavigation<WeatherPage>();
         }
     }
 }
