@@ -11,37 +11,43 @@ namespace MobileFinal.Models
 {
     public static class CharacterItem 
     {
+
         public partial class CharacterInfo
         {
+            [JsonProperty("lastmodified")]
+            public long lastModified { get; set; }
             [JsonProperty("name")]
-            public string Name { get; set; }
-
+            public string name { get; set; }
             [JsonProperty("realm")]
-            public string Realm { get; set; }
-
+            public string realm { get; set; }
+            [JsonProperty("battlegroup")]
+            public string battlegroup { get; set; }
+            [JsonProperty("class")]
+            public int wclass { get; set; }
             [JsonProperty("race")]
-            public String Race { get; set; }
-
+            public int race { get; set; }
+            [JsonProperty("gender")]
+            public int gender { get; set; }
+            [JsonProperty("level")]
+            public int level { get; set; }
             [JsonProperty("achievementPoints")]
-            public String AchievementPoints { get; set; }
-
+            public int achievementPoints { get; set; }
             [JsonProperty("thumbnail")]
-            public ImageSource Thumbnail { get; set; }
-
-
+            public string thumbnail { get; set; }
+            [JsonProperty("calcClass")]
+            public string calcClass { get; set; }
             [JsonProperty("faction")]
-            public string Faction { get; set; }
-
+            public int faction { get; set; }
             [JsonProperty("totalHonorableKills")]
-            public String TotalHonorableKills { get; set; }
+            public int totalHonorableKills { get; set; }
         }
 
-        public partial class CharcterInfo
+        public partial class CharacterInfo
         {
-            public static CharcterInfo FromJson(string json) => JsonConvert.DeserializeObject<CharcterInfo>(json, Converter.Settings);
+            public static CharacterInfo FromJson(string json) => JsonConvert.DeserializeObject<CharacterInfo>(json, Converter.Settings);
         }
 
-        public static string ToJson(this CharcterInfo self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this CharacterInfo self) => JsonConvert.SerializeObject(self, Converter.Settings);
 
         public class Converter
         {

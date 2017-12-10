@@ -16,7 +16,7 @@ namespace MobileFinal.ViewModels
         public DelegateCommand<NewsArticle> DeleteNewsCommand { get; set; }
 
         public DelegateCommand NavToNewsCommand { get; set; }
-
+        public DelegateCommand NavToWeatherCommand { get; set; }
 
 
         private string _newsOrgEnteredByUser;
@@ -49,6 +49,7 @@ namespace MobileFinal.ViewModels
             _navigationService = navigationService;
            // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             NavToNewsCommand = new DelegateCommand(NavToNewsPage);
+            NavToWeatherCommand = new DelegateCommand(NavToWeatherPage);
         }
 
 
@@ -60,11 +61,15 @@ namespace MobileFinal.ViewModels
             await _navigationService.NavigateAsync("NewsPage", navParams);
         }
 
+        private async void NavToWeatherPage()
+        {
+            var navParams = new NavigationParameters();
+
+            await _navigationService.NavigateAsync("WeatherPage", navParams);
+        }
 
 
-        private
-
-        async void GetNewsForOrg()
+        private async void GetNewsForOrg()
         {
             HttpClient client = new HttpClient();
             var uri = new Uri(
