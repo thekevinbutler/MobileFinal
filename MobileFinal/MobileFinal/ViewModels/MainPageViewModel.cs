@@ -16,6 +16,7 @@ namespace MobileFinal.ViewModels
         public DelegateCommand<NewsArticle> DeleteNewsCommand { get; set; }
 
         public DelegateCommand NavToNewsCommand { get; set; }
+		public DelegateCommand NavToTimeCommand { get; set; }
 
 
 
@@ -49,8 +50,13 @@ namespace MobileFinal.ViewModels
             _navigationService = navigationService;
            // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             NavToNewsCommand = new DelegateCommand(NavToNewsPage);
+			NavToTimeCommand = new DelegateCommand(NavToTimePage);
         }
-
+		private async void NavToTimePage()
+		{
+			var navParams = new NavigationParameters();
+			await _navigationService.NavigateAsync("TimePage", navParams);
+		}
 
 
         private async void NavToNewsPage()

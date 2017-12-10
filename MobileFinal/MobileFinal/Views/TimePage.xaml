@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+			 xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MobileFinal.Views.TimePage">
+	<Grid BackgroundColor="MediumPurple"
+		  >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="9*"/>
+		</Grid.RowDefinitions>
+		<Button Text="Back To Main"
+				Command="{Binding BackToMainCommand}"
+				Grid.Row="0"/>
+		<skia:SKCanvasView x:Name="ClockView"
+					 PaintSurface="On_PaintSurface"
+						   Grid.Row="1"/>
+		<Image Source="clockFace.png"
+			   Grid.Row="1"
+			   WidthRequest="100"/>
+	</Grid>
+</ContentPage>
