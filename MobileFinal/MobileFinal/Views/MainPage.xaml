@@ -8,11 +8,10 @@
         Text = "Go to News Page"
         Command = "{Binding NavToNewsCommand}"
         />
-        <Button 
+		<Button 
             Text ="Go to weather"
             Command ="{Binding NavToWeatherCommand}"
             />
-    </StackLayout>
 		<Button
 			Text="Clock"
 			Command="{Binding NavToTimeCommand}"/>

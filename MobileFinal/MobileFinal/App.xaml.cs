@@ -19,11 +19,11 @@ namespace MobileFinal
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
-        protected override async void OnInitialized()
+        protected override void OnInitialized()
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ClockPage");
+            NavigationService.NavigateAsync("MainPage");
         }
 
         protected override void RegisterTypes()
@@ -33,6 +33,7 @@ namespace MobileFinal
             Container.RegisterTypeForNavigation<NewsPage>();
             Container.RegisterTypeForNavigation<NewsMoreInfoPage>();
             Container.RegisterTypeForNavigation<WeatherPage>();
+			Container.RegisterTypeForNavigation<TimePage>();
         }
     }
 }

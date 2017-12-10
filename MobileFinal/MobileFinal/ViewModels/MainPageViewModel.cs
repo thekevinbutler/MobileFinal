@@ -51,14 +51,15 @@ namespace MobileFinal.ViewModels
            // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             NavToNewsCommand = new DelegateCommand(NavToNewsPage);
 			NavToTimeCommand = new DelegateCommand(NavToTimePage);
-        }
+			NavToWeatherCommand = new DelegateCommand(NavToWeatherPage);
+		}
 		private async void NavToTimePage()
 		{
 			var navParams = new NavigationParameters();
 			await _navigationService.NavigateAsync("TimePage", navParams);
 		}
-            NavToWeatherCommand = new DelegateCommand(NavToWeatherPage);
-        }
+
+           
 
 
         private async void NavToNewsPage()
