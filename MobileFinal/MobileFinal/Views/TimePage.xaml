@@ -6,12 +6,19 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MobileFinal.Views.TimePage">
 	<Grid BackgroundColor="MediumPurple"
+		  Padding="20,20,20,20"
 		  >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="9*"/>
+			<RowDefinition Height="7*"/>
+			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
-		<Button Text="Back To Main"
+		
+		<Button Text="Back To Start"
+				BackgroundColor="BlueViolet"
+				TextColor="White"
+				FontSize="Large"
+				HorizontalOptions="Start"
 				Command="{Binding BackToMainCommand}"
 				Grid.Row="0"/>
 		<skia:SKCanvasView x:Name="ClockView"
@@ -20,5 +27,28 @@
 		<Image Source="clockFace.png"
 			   Grid.Row="1"
 			   WidthRequest="100"/>
+
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			
+			<Label Text="{Binding DigitalDateText}"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Start"
+			   TextColor="MediumPurple"
+			   FontSize="48"
+				   FontAttributes="Bold"
+			   Grid.Row="1"/>
+		</Grid>
+		<Label x:Name="DigitalTimeLabel"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center"
+			   TextColor="White"
+			   FontSize="64"
+				FontAttributes="Bold"
+			   Grid.Row="2"/>
 	</Grid>
 </ContentPage>

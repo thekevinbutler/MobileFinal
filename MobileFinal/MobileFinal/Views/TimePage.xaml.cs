@@ -44,7 +44,7 @@ namespace MobileFinal.Views
 			canvas.Scale(width / 200f);
 
 			DateTime dateTime = DateTime.Now;
-
+			DigitalTimeLabel.Text = dateTime.ToLongTimeString();
 			//draw back
 			canvas.DrawCircle(0, 0, 100, clockBack);
 			//draw hour

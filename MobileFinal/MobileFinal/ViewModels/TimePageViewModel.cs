@@ -9,6 +9,12 @@ namespace MobileFinal.ViewModels
 {
 	public class TimePageViewModel : BindableBase, INavigationAware
 	{
+		private string _digitalDateText;
+		public string DigitalDateText
+		{
+			get { return _digitalDateText; }
+			set { SetProperty(ref _digitalDateText, value); }
+		}
 		public INavigationService _navigationService;
 		public DelegateCommand BackToMainCommand { get; set; }
 
@@ -16,6 +22,7 @@ namespace MobileFinal.ViewModels
         {
 			_navigationService = navigationService;
 			BackToMainCommand = new DelegateCommand(NavToMain);
+			DigitalDateText = DateTime.Now.ToShortDateString();
         }
 
 		private async void NavToMain()
