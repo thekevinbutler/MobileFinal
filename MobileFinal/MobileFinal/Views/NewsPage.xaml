@@ -5,6 +5,8 @@
     prism:ViewModelLocator.AutowireViewModel="True" 
     x:Class="MobileFinal.Views.NewsPage">
  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button  Text="Back"
+                    Command="{Binding BackToMainCommand}"/>
             <Button
                 Text="Search"
                 Command="{Binding GetNewsForOrgCommand}" />

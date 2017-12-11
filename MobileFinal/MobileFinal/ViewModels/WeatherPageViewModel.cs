@@ -14,6 +14,7 @@ namespace MobileFinal.ViewModels
     public class WeatherPageViewModel : BindableBase, INavigationAware
     {
         public DelegateCommand GetForecastForCityCommand { get; set; }
+        public DelegateCommand BackToMainCommand { get; set; }
 
 
 
@@ -39,6 +40,8 @@ namespace MobileFinal.ViewModels
             _navigationService = navigationService;
             // DeleteNewsCommand = new DelegateCommand<Articles>(DeleteApod);
             GetForecastForCityCommand = new DelegateCommand(GetForecastForCity);
+            BackToMainCommand = new DelegateCommand(NavToMain);
+
            // NavToMoreInfoPageCommand = new DelegateCommand<Article>(NavToMoreInfoPage);
            // DeleteArtCommand = new DelegateCommand(DeleteArticles);
         }
@@ -69,7 +72,10 @@ namespace MobileFinal.ViewModels
 
 
         }
-
+        private async void NavToMain()
+        {
+            await _navigationService.GoBackAsync();
+        }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {

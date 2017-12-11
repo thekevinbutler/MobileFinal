@@ -6,7 +6,10 @@
 			 prism:ViewModelLocator.AutowireViewModel="True" 
 			 x:Class="MobileFinal.Views.WeatherPage">
  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
+    <Button Text="Back" 
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Command="{Binding BackToMainCommand}"/>
     <Label Text="{Binding Hap}"/>
     <Label Text="above is ramen"/>
     <Button Text="Get Forecast"

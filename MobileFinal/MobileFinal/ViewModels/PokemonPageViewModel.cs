@@ -13,6 +13,9 @@ namespace MobileFinal.ViewModels
     public class PokemonPageViewModel : BindableBase, INavigationAware
     {
 
+        public INavigationService _navigationService;
+        public DelegateCommand BackToMainCommand { get; set; }
+
         private Pokemon _pokeDisplay;
         public Pokemon PokeDisplay
         {
@@ -20,30 +23,30 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _pokeDisplay, value); }
         }
 
-
-        public async void OnNavigatingTo(NavigationParameters parameters)
+        private string _hap;
+        public string Hap
         {
-            Random rnd = new Random();
-            int pokenum = rnd.Next(1, 150);
-            HttpClient client = new HttpClient();
-            var uri = new Uri(
-                string.Format(
-                    $"http://pokeapi.co/api/v2/pokemon/{pokenum}/"));
-            var response = await client.GetAsync(uri);
-            Pokemon pokeData = null;
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                pokeData = Pokemon.FromJson(content);
+            get { return _hap; }
+            set { SetProperty(ref _hap, value); }
+        }
 
 
+        public PokemonPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            BackToMainCommand = new DelegateCommand(NavToMain);
 
-                //for (int i = 0; i < pokeData.Articles.Count; i++)
-                //{
-                //    ArticleCollection.Add(pokeData.Articles[i]);
-                //}
-                PokeDisplay = pokeData;
-            }
+        }
+
+        private async void NavToMain()
+        {
+            await _navigationService.GoBackAsync();
+        }
+
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+            
            
         }
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -51,10 +54,31 @@ namespace MobileFinal.ViewModels
             
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public async void OnNavigatedTo(NavigationParameters parameters)
         {
 
+            Random rnd = new Random();
+            int pokenum = rnd.Next(1, 150);
+            HttpClient client = new HttpClient();
+            var uri = new Uri(
+                string.Format(
+                    $"http://pokeapi.co/api/v2/pokemon/{pokenum}/"));
+            var response = await client.GetAsync(uri);
+           
+            Pokemon pokeData = null;
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                pokeData = Pokemon.FromJson(content);
 
+                // Hap = content.ToString();
+
+                //for (int i = 0; i < pokeData.Articles.Count; i++)
+                //{
+                //    ArticleCollection.Add(pokeData.Articles[i]);
+                //}
+                PokeDisplay = pokeData;
+            }
 
 
         }
