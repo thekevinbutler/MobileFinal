@@ -46,11 +46,10 @@ namespace MobileFinal.ViewModels
            // DeleteArtCommand = new DelegateCommand(DeleteArticles);
         }
 
-        private async void GetForecastForCity()
+		private async void GetForecastForCity()
         {
-			//ArticleCollection.Clear();
 			HttpClient client = new HttpClient();
-            Uri uri = new Uri("api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d0d471a1a152669ddd200968f56c54a3");
+            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d0d471a1a152669ddd200968f56c54a3");
             var response = await client.GetAsync(uri);
             ForecastInfo forecastData = null;
             if (response.IsSuccessStatusCode)
@@ -58,19 +57,8 @@ namespace MobileFinal.ViewModels
                 var content = await response.Content.ReadAsStringAsync();
                 forecastData = ForecastInfo.FromJson(content);
                 Hap = forecastData.ToString();
-
-
-                //for (int i = 0; i < Data.Articles.Count; i++)
-                //{
-                //    ArticleCollection.Add(newsData.Articles[i]);
-                //}
-
             }
             ForecastCollection.Add(forecastData);
-
-
-
-
         }
         private async void NavToMain()
         {

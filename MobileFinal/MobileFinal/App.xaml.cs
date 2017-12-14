@@ -35,6 +35,6 @@ namespace MobileFinal
             Container.RegisterTypeForNavigation<WeatherPage>();
 			Container.RegisterTypeForNavigation<TimePage>();
             Container.RegisterTypeForNavigation<PokemonPage>();
-        }
+		}
     }
 }
