@@ -39,7 +39,7 @@ namespace MobileFinal.ViewModels
             var url = Article.Url.ToString();
             Device.OpenUri(new Uri(url));
         }
-        private void GoBack()
+        private async void GoBack()
         {
             await _navigationService.GoBackAsync();
         }
