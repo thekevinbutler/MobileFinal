@@ -5,26 +5,47 @@
 			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
 			 prism:ViewModelLocator.AutowireViewModel="True" 
 			 xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
-			 x:Class="MobileFinal.Views.PokemonPage">
+			 x:Class="MobileFinal.Views.PokemonPage"
+			 BackgroundColor="OrangeRed"
+			 Padding="20,20,20,20">
 	<StackLayout>
-		<Button Text="Back"
-         Command="{Binding BackToMainCommand}"/>
+		<Grid BackgroundColor="DodgerBlue">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Label Text="Pokemon"
+				   TextColor="Gold"
+				   FontSize="Large"
+				   HorizontalOptions="Center"
+				   VerticalOptions="Center"
+				   Grid.Column="0"
+				   Grid.ColumnSpan="2"/>
+			<Button Text="Back"
+					BackgroundColor="LightBlue"
+					Command="{Binding BackToMainCommand}"
+					Grid.Column="0"/>
+			
+		</Grid>
 		<controls:PullToRefreshLayout
 		IsPullToRefreshEnabled="True"
 		IsRefreshing="{Binding Refreshing}"
 		RefreshCommand="{Binding RefreshCommand}">
-			<Grid>
+			<Grid BackgroundColor="DodgerBlue">
 				<Grid.RowDefinitions>
-					<RowDefinition Height="*"/>
 					<RowDefinition Height="8*"/>
+					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
-				
-				<Label Text="{Binding PokeDisplay.name}"
+				<Image Source="{Binding PokeDisplay.sprites.front_default}"
+					   Scale="15"
+					   HorizontalOptions="Center"
+					   VerticalOptions="Center" 
 					   Grid.Row="0"/>
-				<Image Source ="{Binding PokeDisplay.sprites.front_default}"
-         Scale="10" Aspect="Fill" 
-        HorizontalOptions="EndAndExpand"
-        VerticalOptions="EndAndExpand" 
+				<Label Text="{Binding PokeDisplay.name}"
+					   TextColor="Gold"
+					   FontSize="50"
+					   HorizontalOptions="Center"
+					   VerticalOptions="Start"
 					   Grid.Row="1"/>
 			</Grid>
 		</controls:PullToRefreshLayout>
