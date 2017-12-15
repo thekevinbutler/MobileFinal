@@ -2,6 +2,7 @@
 using UIKit;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Refractored.XamForms.PullToRefresh.iOS;
 
 namespace MobileFinal.iOS
 {
@@ -20,10 +21,14 @@ namespace MobileFinal.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            PullToRefreshLayoutRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
+           
             LoadApplication(new App(new iOSInitializer()));
 
+
             return base.FinishedLaunching(app, options);
+
         }
     }
 
@@ -31,7 +36,6 @@ namespace MobileFinal.iOS
     {
         public void RegisterTypes(IUnityContainer container)
         {
-            
         }
     }
 }
