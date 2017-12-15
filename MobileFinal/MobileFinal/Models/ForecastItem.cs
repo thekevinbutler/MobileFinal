@@ -94,7 +94,8 @@ namespace MobileFinal.Models
             [JsonProperty("sys")]
             public Sys sys { get; set; }
             [JsonProperty("dt_txt")]
-            public string dt_txt { get; set; }
+            public string dt_txt
+            { get; set; }
         }
 
         public partial class ForecastInfo

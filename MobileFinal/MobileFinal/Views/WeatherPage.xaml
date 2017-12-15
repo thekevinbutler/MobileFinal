@@ -4,16 +4,44 @@
 			 xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" 
 			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
 			 prism:ViewModelLocator.AutowireViewModel="True" 
-			 x:Class="MobileFinal.Views.WeatherPage">
+			 x:Class="MobileFinal.Views.WeatherPage"
+             Padding="0,20,0,0"
+             BackgroundColor="Aqua">
     
- <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+ <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
     <Button Text="Back" 
             VerticalOptions="Start"
             HorizontalOptions="Start"
             Command="{Binding BackToMainCommand}"/>
     <Button Text="Get Forecast"
             Command="{Binding GetForecastForCityCommand}"/>
-    <Label Text="{Binding CurrentForecast.city.name}"/>
-        <Label Text="{Binding CurrentForecast.list.main.temp}"/>
+
+        
+        <Grid BackgroundColor="Lime">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                   <ColumnDefinition Width="*"/>                
+                </Grid.ColumnDefinitions>
+            <Label Text="{Binding FiveDay.list[7].dt_txt}" Grid.Column="0"/>
+            <Label Text="{Binding FiveDay.list[15].dt_txt}"  Grid.Column="1"/>
+            <Label Text="{Binding FiveDay.list[23].dt_txt}" Grid.Column="2"/>
+            <Label Text="{Binding FiveDay.list[31].dt_txt}" Grid.Column="3"/>
+            <Label Text="{Binding FiveDay.list[39].dt_txt}" Grid.Column="4"/>
+
+
+            <Label Text="{Binding FiveDay.list[7].main.temp,StringFormat='{0} °F'}" 
+                    Grid.Row="1" />
+            <Label Text="{Binding FiveDay.list[15].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="{Binding FiveDay.list[23].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="2"/>
+            <Label Text="{Binding FiveDay.list[31].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="3"/>
+            <Label Text="{Binding FiveDay.list[39].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="4"/>
+    </Grid>
   </StackLayout>
 </ContentPage>

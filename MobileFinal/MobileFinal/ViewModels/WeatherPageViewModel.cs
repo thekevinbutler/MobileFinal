@@ -25,6 +25,13 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _forecastCollection, value); }
         }
 
+        private ForecastInfo _fiveday;
+        public  ForecastInfo FiveDay
+        {
+            get { return _fiveday; }
+            set { SetProperty(ref _fiveday, value); }
+        }
+
         private string _search;
         public string Search
         {
@@ -57,7 +64,7 @@ namespace MobileFinal.ViewModels
         {
 			HttpClient client = new HttpClient();
 
-            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?q=San+Marcos,us&APPID=d0d471a1a152669ddd200968f56c54a3");
+            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?q=San+Marcos,us&units=imperial&APPID=d0d471a1a152669ddd200968f56c54a3");
 
             var response = await client.GetAsync(uri);
             ForecastInfo forecastData = null;
@@ -65,9 +72,15 @@ namespace MobileFinal.ViewModels
             {
                 var content = await response.Content.ReadAsStringAsync();
                 forecastData = ForecastInfo.FromJson(content);
-                CurrentForecast = forecastData;
-            }
+                FiveDay = forecastData;
 
+            }
+            for (int i = 7; i <= 39;)
+            {
+                FiveDay.list[i].dt_txt = FiveDay.list[i].dt_txt.Substring(5, 5);
+
+                i += 8;
+            }
         }
         private async void NavToMain()
         {
