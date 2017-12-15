@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using static MobileFinal.Models.PokemonItem;
 using System.Collections.ObjectModel;
-using System.Net.Http;
 using System.Diagnostics;
 using ModernHttpClient;
+using System.Net.Http;
 
 namespace MobileFinal.ViewModels
 {
     public class PokemonPageViewModel : BindableBase, INavigationAware
     {
-
+		public DelegateCommand RefreshCommand { get; set; }
         public INavigationService _navigationService;
         public DelegateCommand BackToMainCommand { get; set; }
 
@@ -26,7 +26,14 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _pokeDisplay, value); }
         }
 
-        private string _hap;
+		private bool _refreshing;
+		public bool Refreshing
+		{
+			get { return _refreshing; }
+			set { SetProperty(ref _refreshing, value); }
+		}
+
+		private string _hap;
         public string Hap
         {
             get { return _hap; }
@@ -38,8 +45,17 @@ namespace MobileFinal.ViewModels
         {
             _navigationService = navigationService;
             BackToMainCommand = new DelegateCommand(NavToMain);
-
+			RefreshCommand = new DelegateCommand(RefreshPokemon);
+			//Refreshing = true;
         }
+
+		private void RefreshPokemon()
+		{
+			PokeDisplay = new Pokemon();
+			Refreshing = false;
+			RandomPokemon();
+			
+		}
 
         private async void NavToMain()
         {

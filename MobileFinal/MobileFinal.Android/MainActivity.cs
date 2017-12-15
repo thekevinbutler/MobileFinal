@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Refractored.XamForms.PullToRefresh.Droid;
 
 namespace MobileFinal.Droid
 {
@@ -17,7 +18,8 @@ namespace MobileFinal.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(new AndroidInitializer()));
+			PullToRefreshLayoutRenderer.Init();
+			LoadApplication(new App(new AndroidInitializer()));
         }
     }
 
