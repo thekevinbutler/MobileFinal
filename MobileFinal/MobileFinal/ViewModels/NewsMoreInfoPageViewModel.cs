@@ -16,6 +16,7 @@ namespace MobileFinal.ViewModels
             INavigationService _navigationService;
 
             public DelegateCommand GoWebCommand{ get; set; }
+            public DelegateCommand GoBackCommand { get; set; }
 
             private Article _article;
             public Article Article
@@ -30,12 +31,17 @@ namespace MobileFinal.ViewModels
                 _navigationService = navigationService;
 
             GoWebCommand = new DelegateCommand(GoWeb);
+            GoBackCommand = new DelegateCommand(GoBack);
         }
 
         private void GoWeb()
         {
             var url = Article.Url.ToString();
             Device.OpenUri(new Uri(url));
+        }
+        private void GoBack()
+        {
+            await _navigationService.GoBackAsync();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

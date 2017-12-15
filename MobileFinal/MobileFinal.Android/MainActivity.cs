@@ -18,8 +18,8 @@ namespace MobileFinal.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-			PullToRefreshLayoutRenderer.Init();
-			LoadApplication(new App(new AndroidInitializer()));
+            PullToRefreshLayoutRenderer.Init();
+            LoadApplication(new App(new AndroidInitializer()));
         }
     }
 

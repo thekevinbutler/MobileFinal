@@ -25,11 +25,18 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _forecastCollection, value); }
         }
 
-        private string _hap;
-        public string Hap
+        private string _search;
+        public string Search
         {
-            get { return _hap; }
-            set { SetProperty(ref _hap, value); }
+            get { return _search; }
+            set { SetProperty(ref _search, value); }
+        }
+
+        private ForecastInfo _currentForecast;
+        public ForecastInfo CurrentForecast
+        {
+            get { return _currentForecast; }
+            set { SetProperty(ref _currentForecast, value); }
         }
 
         INavigationService _navigationService;
@@ -49,19 +56,20 @@ namespace MobileFinal.ViewModels
 		private async void GetForecastForCity()
         {
 			HttpClient client = new HttpClient();
-            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d0d471a1a152669ddd200968f56c54a3");
+            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?q=San+Marcos,us&APPID=d0d471a1a152669ddd200968f56c54a3");
             var response = await client.GetAsync(uri);
             ForecastInfo forecastData = null;
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
                 forecastData = ForecastInfo.FromJson(content);
-                Hap = forecastData.ToString();
+                CurrentForecast = forecastData;
             }
-            ForecastCollection.Add(forecastData);
+
         }
         private async void NavToMain()
         {
+            
             await _navigationService.GoBackAsync();
         }
 

@@ -5,14 +5,15 @@
 			 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
 			 prism:ViewModelLocator.AutowireViewModel="True" 
 			 x:Class="MobileFinal.Views.WeatherPage">
+    
  <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
     <Button Text="Back" 
             VerticalOptions="Start"
             HorizontalOptions="Start"
             Command="{Binding BackToMainCommand}"/>
-    <Label Text="{Binding Hap}"/>
-    <Label Text="above is ramen"/>
     <Button Text="Get Forecast"
             Command="{Binding GetForecastForCityCommand}"/>
+    <Label Text="{Binding CurrentForecast.city.name}"/>
+        <Label Text="{Binding CurrentForecast.list.main.temp}"/>
   </StackLayout>
 </ContentPage>

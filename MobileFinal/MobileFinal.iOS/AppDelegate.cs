@@ -21,11 +21,14 @@ namespace MobileFinal.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            PullToRefreshLayoutRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
 			PullToRefreshLayoutRenderer.Init();
 			LoadApplication(new App(new iOSInitializer()));
 
+
             return base.FinishedLaunching(app, options);
+
         }
     }
 
@@ -33,7 +36,6 @@ namespace MobileFinal.iOS
     {
         public void RegisterTypes(IUnityContainer container)
         {
-            
         }
     }
 }
