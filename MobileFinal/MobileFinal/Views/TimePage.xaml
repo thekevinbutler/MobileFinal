@@ -4,26 +4,40 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
 			 xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="MobileFinal.Views.TimePage">
-	<Grid BackgroundColor="MediumPurple"
-		  Padding="20,20,20,20"
-		  >
+             x:Class="MobileFinal.Views.TimePage"
+			 Padding="0,20,0,0">
+	<Grid BackgroundColor="MediumPurple">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="7*"/>
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
-		
-		<Button Text="Back To Start"
+
+		<Grid Grid.Row="0"
+			  BackgroundColor="Purple">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Label Text="Clock"
+				   TextColor="White"
+				   FontSize="Large"
+				   HorizontalOptions="CenterAndExpand"
+				   VerticalOptions="CenterAndExpand"
+				   Grid.Column="0"
+				   Grid.ColumnSpan="2"/>
+			<Button Text="Back"
 				BackgroundColor="BlueViolet"
 				TextColor="White"
 				FontSize="Large"
 				HorizontalOptions="Start"
 				Command="{Binding BackToMainCommand}"
-				Grid.Row="0"/>
+				Grid.Column="0"/>
+			
+		</Grid>
 		<skia:SKCanvasView x:Name="ClockView"
-					 PaintSurface="On_PaintSurface"
-						   Grid.Row="1"/>
+				PaintSurface="On_PaintSurface"
+				Grid.Row="1"/>
 		<Image Source="clockFace.png"
 			   Grid.Row="1"
 			   WidthRequest="100"/>
@@ -40,7 +54,7 @@
 			   VerticalOptions="Start"
 			   TextColor="MediumPurple"
 			   FontSize="48"
-				   FontAttributes="Bold"
+			   FontAttributes="Bold"
 			   Grid.Row="1"/>
 		</Grid>
 		<Label x:Name="DigitalTimeLabel"

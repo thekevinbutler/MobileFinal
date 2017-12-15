@@ -53,32 +53,28 @@ namespace MobileFinal.ViewModels
         {
             
         }
+		private async void justCallTheDamnAPI()
+		{
+			Random rnd = new Random();
+			int pokenum = rnd.Next(1, 150);
+			HttpClient client = new HttpClient();
+			var uri = new Uri(
+				string.Format(
+					$"https://pokeapi.co/api/v2/pokemon/{pokenum}/"));
+			var response = await client.GetAsync(uri);
 
-        public async void OnNavigatedTo(NavigationParameters parameters)
+			Pokemon pokeData = null;
+			if (response.IsSuccessStatusCode)
+			{
+				var content = await response.Content.ReadAsStringAsync();
+				pokeData = Pokemon.FromJson(content);
+				PokeDisplay = pokeData;
+			}
+		}
+        public void OnNavigatedTo(NavigationParameters parameters)
         {
-
-            Random rnd = new Random();
-            int pokenum = rnd.Next(1, 150);
-            HttpClient client = new HttpClient();
-            var uri = new Uri(
-                string.Format(
-                    $"http://pokeapi.co/api/v2/pokemon/{pokenum}/"));
-            var response = await client.GetAsync(uri);
-           
-            Pokemon pokeData = null;
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                pokeData = Pokemon.FromJson(content);
-
-                // Hap = content.ToString();
-
-                //for (int i = 0; i < pokeData.Articles.Count; i++)
-                //{
-                //    ArticleCollection.Add(pokeData.Articles[i]);
-                //}
-                PokeDisplay = pokeData;
-            }
+			justCallTheDamnAPI();
+            
 
 
         }

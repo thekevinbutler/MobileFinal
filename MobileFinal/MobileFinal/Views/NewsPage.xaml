@@ -4,29 +4,76 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
     prism:ViewModelLocator.AutowireViewModel="True" 
     x:Class="MobileFinal.Views.NewsPage">
- <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Button  Text="Back"
-                    Command="{Binding BackToMainCommand}"/>
-            <Button
-                Text="Search"
-                Command="{Binding GetNewsForOrgCommand}" />
-            <Button
-                Text="Clear"
-                Command="{Binding DeleteArtCommand}" />
-        <Picker x:Name="picker" 
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="TitleColor">#3498DB</Color>
+			<Color x:Key="BackgroundColor">LightBlue</Color>
+			<Color x:Key="ForegroundColor">#3980B9</Color>
+			<Color x:Key="AccentColor">White</Color>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+		  BackgroundColor="{StaticResource BackgroundColor}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="7*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0"
+			  BackgroundColor="{StaticResource TitleColor}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Label Text="News"
+				   TextColor="{StaticResource AccentColor}"
+				   FontSize="Large"
+				   VerticalOptions="CenterAndExpand"
+				   HorizontalOptions="CenterAndExpand"
+				   Grid.Column="0"
+				   Grid.ColumnSpan="2"/>
+			<Button Text="Back"
+					TextColor="{StaticResource AccentColor}"
+					BackgroundColor="{StaticResource ForegroundColor}"
+                    Command="{Binding BackToMainCommand}"
+					Grid.Column="0"/>
+		</Grid>
+		<Picker x:Name="picker" 
             SelectedItem="{Binding NewsOrgEnteredByUser}"
-            Title="Select a news Org">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                <x:String>bbc-news</x:String>
-                <x:String>wired</x:String>
-                <x:String>techcrunch</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+            Title="Select a news Org"
+				Grid.Row="1">
+			<Picker.ItemsSource>
+				<x:Array Type="{x:Type x:String}">
+					<x:String>bbc-news</x:String>
+					<x:String>wired</x:String>
+					<x:String>techcrunch</x:String>
+				</x:Array>
+			</Picker.ItemsSource>
+		</Picker>
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Button
+                Text="Search"
+				TextColor="{StaticResource AccentColor}"
+				BackgroundColor="{StaticResource ForegroundColor}"
+                Command="{Binding GetNewsForOrgCommand}"
+				Grid.Column="0"/>
+			<Button
+                Text="Clear"
+				TextColor="{StaticResource AccentColor}"
+				BackgroundColor="{StaticResource ForegroundColor}"
+                Command="{Binding DeleteArtCommand}"
+				Grid.Column="1"/>
+		</Grid>
+		
         <ListView
             x:Name="NewsListView"
-            ItemsSource="{Binding ArticleCollection}">
+            ItemsSource="{Binding ArticleCollection}"
+			Grid.Row="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell
@@ -41,17 +88,20 @@
                                 Text="More Info" />
                         </ViewCell.ContextActions>
                         <ViewCell.View>
-                            <StackLayout
+                            <StackLayout 
                                 Orientation="Horizontal">
                                 <Label
                                     x:Name="TitleNameLabel"
                                     Text="{Binding Title}"
-                                    VerticalOptions="Center"
+                                    VerticalOptions="StartAndExpand"
+									HorizontalOptions="StartAndExpand"
                                     Margin="10" />
                                 <Label
                                     x:Name="DateLabel"
                                     Text="{Binding PublishedAt}"
+									FontSize="Micro"
                                     VerticalOptions="Center"
+									HorizontalOptions="End"
                                     Margin="3" />
                             </StackLayout>
                         </ViewCell.View>
@@ -59,6 +109,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 
