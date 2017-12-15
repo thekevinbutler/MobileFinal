@@ -50,7 +50,7 @@ namespace MobileFinal.ViewModels
         {
 			//ArticleCollection.Clear();
 			HttpClient client = new HttpClient();
-            Uri uri = new Uri("api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d0d471a1a152669ddd200968f56c54a3");
+            Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=d0d471a1a152669ddd200968f56c54a3");
             var response = await client.GetAsync(uri);
             ForecastInfo forecastData = null;
             if (response.IsSuccessStatusCode)
