@@ -8,6 +8,9 @@ using System.Text;
 using static MobileFinal.Models.PokemonItem;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Diagnostics;
+using ModernHttpClient;
+
 namespace MobileFinal.ViewModels
 {
     public class PokemonPageViewModel : BindableBase, INavigationAware
@@ -53,16 +56,18 @@ namespace MobileFinal.ViewModels
         {
             
         }
-		private async void justCallTheDamnAPI()
+		private async void RandomPokemon()
 		{
 			Random rnd = new Random();
 			int pokenum = rnd.Next(1, 150);
-			HttpClient client = new HttpClient();
+			HttpClient client = new HttpClient(new NativeMessageHandler());
 			var uri = new Uri(
 				string.Format(
 					$"https://pokeapi.co/api/v2/pokemon/{pokenum}/"));
-			var response = await client.GetAsync(uri);
-
+			try
+			{
+				var response = await client.GetAsync(uri);
+			
 			Pokemon pokeData = null;
 			if (response.IsSuccessStatusCode)
 			{
@@ -70,13 +75,15 @@ namespace MobileFinal.ViewModels
 				pokeData = Pokemon.FromJson(content);
 				PokeDisplay = pokeData;
 			}
+			}
+			catch (Exception e)
+			{
+				Debug.Print(e.StackTrace);
+			}
 		}
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-			justCallTheDamnAPI();
-            
-
-
+			RandomPokemon();
         }
 
 
