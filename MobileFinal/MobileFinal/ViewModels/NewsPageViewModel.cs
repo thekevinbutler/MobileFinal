@@ -27,6 +27,9 @@ namespace MobileFinal.ViewModels
             set { SetProperty(ref _hap, value); }
         }
 
+
+
+
         private string _newsOrgEnteredByUser;
         public string NewsOrgEnteredByUser
         {

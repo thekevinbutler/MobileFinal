@@ -19,6 +19,7 @@ namespace MobileFinal.ViewModels
         public DelegateCommand NavToWeatherCommand { get; set; }
 		public DelegateCommand NavToTimeCommand { get; set; }
         public DelegateCommand NavToPokemonCommand { get; set; }
+        public DelegateCommand NavToMapCommand { get; set; }
 
         private string _newsOrgEnteredByUser;
         public string NewsOrgEnteredByUser
@@ -53,6 +54,7 @@ namespace MobileFinal.ViewModels
 			NavToTimeCommand = new DelegateCommand(NavToTimePage);
 			NavToWeatherCommand = new DelegateCommand(NavToWeatherPage);
             NavToPokemonCommand = new DelegateCommand(NavToPokemonPage);
+            NavToMapCommand = new DelegateCommand(NavToMapPage);
 		}
 		private async void NavToTimePage()
 		{
@@ -64,8 +66,13 @@ namespace MobileFinal.ViewModels
             var navParams = new NavigationParameters();
             await _navigationService.NavigateAsync("PokemonPage", navParams);
         }
-           
 
+        private async void NavToMapPage()
+        {
+            var navParams = new NavigationParameters();
+
+            await _navigationService.NavigateAsync("MapPage", navParams);
+        }
 
         private async void NavToNewsPage()
         {

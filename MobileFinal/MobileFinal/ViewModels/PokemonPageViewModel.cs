@@ -19,6 +19,7 @@ namespace MobileFinal.ViewModels
         public INavigationService _navigationService;
         public DelegateCommand BackToMainCommand { get; set; }
 
+
         private Pokemon _pokeDisplay;
         public Pokemon PokeDisplay
         {

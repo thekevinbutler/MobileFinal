@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MobileFinal.Views.MapPage">
+    <StackLayout
+        VerticalOptions="StartAndExpand"
+        Padding="10">
+        <Button
+            Text="Back"
+                    Command="{Binding BackToMainCommand}"
+        />
+        <maps:Map
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            WidthRequest="300"
+            HeightRequest="300"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Satellite" />
+        <Picker
+            x:Name="MapPicker"
+            SelectedIndexChanged="Handle_SelectedIndexChanged"
+            Title="Select Map Type"
+            Margin="10" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>
+                        Street
+                    </x:String>
+                    <x:String>
+                        Satellite
+                    </x:String>
+                    <x:String>
+                        Hybrid
+                    </x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </StackLayout>
+</ContentPage>

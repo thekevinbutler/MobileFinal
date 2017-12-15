@@ -141,6 +141,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.4.0.282" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.168-pre" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>2.4.0.282</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileFinal\MobileFinal.csproj">

@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+MobileFinal/MobileFinal.Android/Resources/Resource.designer.cs
+MobileFinal/MobileFinal.Android/Resources/Resource.designer.cs
+MobileFinal/MobileFinal.Android/Resources/Resource.designer.cs
