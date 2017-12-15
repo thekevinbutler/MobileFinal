@@ -56,7 +56,9 @@ namespace MobileFinal.ViewModels
 		private async void GetForecastForCity()
         {
 			HttpClient client = new HttpClient();
+
             Uri uri = new Uri("http://api.openweathermap.org/data/2.5/forecast?q=San+Marcos,us&APPID=d0d471a1a152669ddd200968f56c54a3");
+
             var response = await client.GetAsync(uri);
             ForecastInfo forecastData = null;
             if (response.IsSuccessStatusCode)

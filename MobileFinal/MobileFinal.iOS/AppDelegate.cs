@@ -23,8 +23,12 @@ namespace MobileFinal.iOS
         {
             PullToRefreshLayoutRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
+
 			PullToRefreshLayoutRenderer.Init();
-			LoadApplication(new App(new iOSInitializer()));
+			
+
+            Xamarin.FormsMaps.Init();
+            LoadApplication(new App(new iOSInitializer()));
 
 
             return base.FinishedLaunching(app, options);
