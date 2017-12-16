@@ -75,11 +75,12 @@ namespace MobileFinal.ViewModels
                 FiveDay = forecastData;
 
             }
-            for (int i = 7; i <= 39;)
+            int j = 0;
+            for (int i = 0; i < 5;i++)
             {
-                FiveDay.list[i].dt_txt = FiveDay.list[i].dt_txt.Substring(5, 5);
+                FiveDay.list[j].dt_txt = FiveDay.list[j].dt_txt.Substring(5, 5);
 
-                i += 8;
+                j += 8;
             }
         }
         private async void NavToMain()

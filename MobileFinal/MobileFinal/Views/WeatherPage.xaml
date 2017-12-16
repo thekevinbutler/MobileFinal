@@ -29,19 +29,19 @@
                     <ColumnDefinition Width="*"/>
                    <ColumnDefinition Width="*"/>                
                 </Grid.ColumnDefinitions>
-            <Label Text="{Binding FiveDay.list[7].dt_txt}" Grid.Column="0"/>
-            <Label Text="{Binding FiveDay.list[15].dt_txt}"  Grid.Column="1"/>
-            <Label Text="{Binding FiveDay.list[23].dt_txt}" Grid.Column="2"/>
-            <Label Text="{Binding FiveDay.list[31].dt_txt}" Grid.Column="3"/>
-            <Label Text="{Binding FiveDay.list[39].dt_txt}" Grid.Column="4"/>
+            <Label Text="{Binding FiveDay.list[0].dt_txt}" Grid.Column="0"/>
+            <Label Text="{Binding FiveDay.list[8].dt_txt}"  Grid.Column="1"/>
+            <Label Text="{Binding FiveDay.list[16].dt_txt}" Grid.Column="2"/>
+            <Label Text="{Binding FiveDay.list[24].dt_txt}" Grid.Column="3"/>
+            <Label Text="{Binding FiveDay.list[32].dt_txt}" Grid.Column="4"/>
 
 
-            <Label Text="{Binding FiveDay.list[7].main.temp,StringFormat='{0} °F'}" 
+            <Label Text="{Binding FiveDay.list[0].main.temp_max,StringFormat='{0} °F'}" 
                     Grid.Row="1" />
-            <Label Text="{Binding FiveDay.list[15].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="1"/>
-            <Label Text="{Binding FiveDay.list[23].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="2"/>
-            <Label Text="{Binding FiveDay.list[31].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="3"/>
-            <Label Text="{Binding FiveDay.list[39].main.temp,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="4"/>
+            <Label Text="{Binding FiveDay.list[8].main.temp_max,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="{Binding FiveDay.list[16].main.temp_max,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="2"/>
+            <Label Text="{Binding FiveDay.list[24].main.temp_max,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="3"/>
+            <Label Text="{Binding FiveDay.list[32].main.temp_max,StringFormat='{0} °F'}" Grid.Row="1" Grid.Column="4"/>
     </Grid>
   </StackLayout>
 </ContentPage>
